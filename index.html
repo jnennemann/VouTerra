@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <header>
+    <h1></h1>
+  </header>
+  <script>
+ 
+  // Parse arguments from the current URL's querystring
+  const IncomingURL = window.location;
+  const parsedHash = new URLSearchParams(IncomingURL.hash.substring(1));
+  const MyAccessToken = parsedHash.get("code");
+  const MyFileName = parsedHash.get("state");
+  const SendURL = new XMLHttpRequest();
+ 
+  // Prepare our payload
+  let RequestPayload = {
+    script: "DropboxToken",
+    param: MyAccessToken,
+  };
+  let RequestPayloadString = new URLSearchParams(RequestPayload).toString();
+ 
+  // Assemble the destination URL
+  let RequestURL = `fmp://$/${"Test.fmp12"}?${RequestPayloadString}`
+  // Redirect
+  window.location.replace(RequestURL);
+  </script>
+ 
+</body>
+ 
+</html>
