@@ -26,7 +26,8 @@
   let RequestPayloadString = new URLSearchParams(RequestPayload).toString();
  
   // Assemble the destination URL
-  let RequestURL = `fmp://$/${"Test.fmp12"}?${RequestPayloadString}`
+  // let RequestURL = `fmp://$/${"Test.fmp12"}?${RequestPayloadString}`
+    let RequestURL = `fmp://$/${"Test.fmp12"}?${IncomingURL}`
   // Redirect
   window.location.replace(RequestURL);
   </script>
