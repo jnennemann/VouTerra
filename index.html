@@ -15,16 +15,13 @@
   const IncomingURL = window.location;
   const parsedHash = new URLSearchParams(IncomingURL.hash.substring(1));
   const MyAccessToken = parsedHash.get("code");
-
-  const urlParams = new URLSearchParams(window.location.search);
-  const authorizationCode = urlParams.get('code');
   const MyFileName = parsedHash.get("state");
   const SendURL = new XMLHttpRequest();
  
   // Prepare our payload
   let RequestPayload = {
     script: "DropboxToken",
-    param: authorizationCode,
+    param: MyAccessToken,
   };
   let RequestPayloadString = new URLSearchParams(RequestPayload).toString();
  
