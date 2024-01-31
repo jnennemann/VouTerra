@@ -12,21 +12,19 @@
   <script>
  
   // Parse arguments from the current URL's querystring
-  const IncomingURL = window.location;
-  const parsedHash = new URLSearchParams(IncomingURL.hash.substring(1));
-  const MyAccessToken = parsedHash.get("code");
-  const MyFileName = parsedHash.get("state");
-  const SendURL = new XMLHttpRequest();
+  const currentURL = window.location.href;
+  const url = new URL(currentURL);
+  const codeValue = url.searchParams.get("code");
  
   // Prepare our payload
   let RequestPayload = {
-    script: "DropboxToken",
-    param: MyAccessToken,
+    script: "DropBox - Get OAuth Code - Pull Code",
+    param: codeValue,
   };
   let RequestPayloadString = new URLSearchParams(RequestPayload).toString();
  
   // Assemble the destination URL
-  let RequestURL = `fmp://$/${"Test.fmp12"}?${RequestPayloadString}`
+  let RequestURL = `fmp://$/${"dbtest.fmp12"}?${RequestPayloadString}`
   // Redirect
   window.location.replace(RequestURL);
   </script>
