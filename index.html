@@ -14,7 +14,7 @@
   // Parse arguments from the current URL's querystring
   const IncomingURL = window.location;
   const parsedHash = new URLSearchParams(IncomingURL.hash.substring(1));
-  const MyAccessToken = parsedHash.get("code");
+  const MyAccessToken = parsedHash.get("access_token");
   const MyFileName = parsedHash.get("state");
   const SendURL = new XMLHttpRequest();
  
